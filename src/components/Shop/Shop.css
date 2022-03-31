@@ -8,3 +8,16 @@
     grid-gap: 45px;
     margin: 100px 50px;
 }
+.cart-container{
+    background-color: rgba(255, 153, 0, 0.3);
+}
+.cart-container button{
+    width: 100%;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: orange;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+}

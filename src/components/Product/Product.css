@@ -36,6 +36,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color: black;
 }
 .btn-text{
     margin-right: 10px;
@@ -43,4 +44,7 @@
 .btn-cart:hover{
     background: orange;
     color: white;
+}
+.icon{
+    width: 18px;
 }

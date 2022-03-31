@@ -1,5 +1,6 @@
 import React from 'react';
 import './Product.css'
+import {  ShoppingCartIcon } from '@heroicons/react/solid'
 
 const Product = (props) => {
     const {name, img, seller, price, ratings} = props.product
@@ -14,7 +15,7 @@ const Product = (props) => {
             </div>
             <button onClick={() => props.handle(props.product)} className='btn-cart'>
                 <p className='btn-text'>Add To Cart</p>
-                <p>Cartpic</p>
+                <p><ShoppingCartIcon className="icon"></ShoppingCartIcon></p>
             </button>
         </div>
     );

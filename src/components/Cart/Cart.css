@@ -1,0 +1,14 @@
+.cart{
+    position: sticky;
+    top: 0;
+    padding: 30px 30px;
+}
+.dlt-btn{
+    width: 100%;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: orange;
+    padding: 10px 20px;
+    cursor: pointer;
+}
