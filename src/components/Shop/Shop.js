@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 import useProducts from '../../hooks/useProducts';
@@ -6,6 +6,8 @@ import { addToDb, deleteShoppingCart, getStoredCart } from '../../utilities/fake
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
+
+export const NameContext = createContext('name');
 
 const Shop = () => {
     const [products, setProducts] = useProducts();
@@ -16,7 +18,7 @@ const Shop = () => {
     //     .then(data => setProducts(data))
     // },[]);
 
-    
+
     const [cart, setCart] = useCart(products);
 
     // useEffect( () => {
@@ -33,17 +35,17 @@ const Shop = () => {
     //     setCart(savedCart)
     // },[products])
 
-    const handle = (SelectedProduct) =>{
+    const handle = (SelectedProduct) => {
         let newCart = [];
         const exists = cart.find(product => product.id === SelectedProduct.id)
-        if(!exists){
+        if (!exists) {
             SelectedProduct.quantity = 1;
-            newCart = [...cart , SelectedProduct]
+            newCart = [...cart, SelectedProduct]
         }
-        else{
+        else {
             const rest = cart.filter(product => product.id !== SelectedProduct.id);
             exists.quantity = exists.quantity + 1;
-            newCart = [...rest , exists]
+            newCart = [...rest, exists]
         }
         setCart(newCart)
         addToDb(SelectedProduct.id)
@@ -56,27 +58,27 @@ const Shop = () => {
         setCart([])
     }
     return (
-        <div className='shop-container'>
-            <div className="products-container">
-                {
-                    products.map(product => <Product 
-                        key={product.id} 
-                        product = {product}
-                        handle = {handle}
+            <div className='shop-container'>
+                <div className="products-container">
+                    {
+                        products.map(product => <Product
+                            key={product.id}
+                            product={product}
+                            handle={handle}
                         ></Product>)
-                }
+                    }
+                </div>
+                <div className="cart-container">
+                    <Cart
+                        cart={cart}
+                        deleteCart={deleteCart}
+                    >
+                        <Link to='/orders'>
+                            <button>Review Orders</button>
+                        </Link>
+                    </Cart>
+                </div>
             </div>
-            <div className="cart-container">
-                <Cart 
-                cart={cart}
-                deleteCart = {deleteCart}
-                >
-                    <Link to='/orders'>
-                        <button>Review Orders</button>
-                    </Link>
-                </Cart>
-            </div>
-        </div>
     );
 };
 

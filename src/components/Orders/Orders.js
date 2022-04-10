@@ -19,11 +19,9 @@ const Orders = () => {
     }
 
     const handleRemoveProduct = product => {
-        let newCart = [];
         const rest = cart.filter(pd => pd.id !== product.id);
-        if (rest) {
-            newCart = [...rest]
-        }
+        const newCart = rest;
+        
         setCart(newCart);
         removeFromDb(product.id)
     }
@@ -44,8 +42,8 @@ const Orders = () => {
                         cart={cart}
                         deleteCart={deleteCart}
                     >
-                        <Link to='/inventory'>
-                            <button>Proceed Checkout</button>
+                        <Link to='/shippment'>
+                            <button>Proceed Shipping</button>
                         </Link>
                     </Cart>
                 </div>
