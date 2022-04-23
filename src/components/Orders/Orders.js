@@ -2,15 +2,12 @@ import React from 'react';
 import './Orders.css'
 import { Link } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
-import useProducts from '../../hooks/useProducts';
-import { addToDb, deleteShoppingCart, removeFromDb } from '../../utilities/fakedb';
+import { deleteShoppingCart, removeFromDb } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
-import Product from '../Product/Product';
 import ReviewItem from '../ReviewItem/ReviewItem';
 
 const Orders = () => {
-    const [products, setProducts] = useProducts();
-    const [cart, setCart] = useCart(products);
+    const [cart, setCart] = useCart();
 
     // mine try
     const deleteCart = () => {
@@ -19,11 +16,11 @@ const Orders = () => {
     }
 
     const handleRemoveProduct = product => {
-        const rest = cart.filter(pd => pd.id !== product.id);
+        const rest = cart.filter(pd => pd._id !== product._id);
         const newCart = rest;
         
         setCart(newCart);
-        removeFromDb(product.id)
+        removeFromDb(product._id)
     }
     return (
         <div>
@@ -31,7 +28,7 @@ const Orders = () => {
                 <div className="review-item-container">
                     {
                         cart.map(product => <ReviewItem
-                            key={product.id}
+                            key={product._id}
                             product={product}
                             handleRemoveProduct={handleRemoveProduct}
                         ></ReviewItem>)

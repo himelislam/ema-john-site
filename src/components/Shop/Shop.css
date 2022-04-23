@@ -21,3 +21,17 @@
     cursor: pointer;
     margin-top: 20px;
 }
+.pagination button{
+    margin-right: 10px;
+    background-color: whitesmoke;
+    border: 1px solid orange;
+    padding: 7px;
+
+}
+.pagination .selected{
+    margin-right: 10px;
+    background-color: orange;
+    border: 1px solid whitesmoke;
+    padding: 7px;
+
+}
